@@ -43,6 +43,12 @@ Respect the following file structure:
     ...
 ```
 
+## Setup
+A conda environment can be set up with
+```bash
+conda env create -n workflow -f environment.yml
+conda activate workflow
+```
 
 ## Commands
 

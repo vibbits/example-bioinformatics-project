@@ -1,0 +1,5 @@
+# ignore following directories
+data/
+reference/
+snakemake/
+nextflow/

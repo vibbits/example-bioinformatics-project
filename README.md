@@ -14,3 +14,31 @@ Some [documentation for CWL](https://www.commonwl.org/).
 * [Apache Airflow](https://airflow.apache.org/)
 * [Cuneiform]()
 * [Ruffus](http://www.ruffus.org.uk/)
+
+James: GNU Make & Guix Workflow Language
+Tuur: Snakemake & Nextflow
+
+Set-up: analyze the data of variant analysis course: quality control & alignment of subset of the data.
+
+## Situation 1
+We presume the data & reference have already been downloaded, if not, download it similarly as explained in [this repo](https://github.com/tmuylder/variantcalling/blob/master/Commands_jan2020_10pc.md). The commands that should be used are listed here below.
+
+Respect the following file structure:
+```
+ home/
+    |
+    |- data/
+    |   |- HG001.GRCh38_chr22_0.01.fq.gz
+    |   |- ...
+    |
+    |- reference/
+    |   |- ...
+    |
+    |- nextflow/ 
+    |   |- ...
+    |
+    |- snakemake/
+    |   |-...
+    | 
+    ...
+```

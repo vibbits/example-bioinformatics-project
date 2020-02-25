@@ -48,8 +48,13 @@ Respect the following file structure:
 
 ```
 # Make directory quality-controls & perform fastqc
-fastqc data/HG001.GRCh38_chr22_0.01.fq.gz data/HG001.GRCh38_chr22_0.01.fq.gz 
+mkdir test-commands/quality-control
+fastqc --outdir test-commands/quality-control/ data/HG001.GRCh38_chr22_0.01_1.fq.gz data/HG001.GRCh38_chr22_0.01_2.fq.gz
 
 # Make directory bwa-mappings & perform alignment & convert sam to bam
-bwa mem -t 24 -M -R '@RG\tID:HG001\tLB:NA12878_giab\tPU:unknown-0.0\tPL:Illumina\tSM:NA12878' reference/Homo_sapiens_assembly38_chr22.fa data/HG001.GRCh38_chr22_0.1_1.fq.gz data/HG001.GRCh38_chr22_0.1_2.fq.gz | samtools view -b - -o bwa_mappings/HG001_chr22_rawmappings.bam
+mkdir test-commands/bwa-mapping
+bwa mem -t 4 -M reference/Homo_sapiens_assembly38_chr22.fa data/HG001.GRCh38_chr22_0.01_1.fq.gz data/HG001.GRCh38_chr22_0.01_2.fq.gz | samtools view -b - -o test-commands/bwa-mapping/HG001_chr22_rawmappings.bam
+
+# Quality control on bam file
+fastqc --outdir test-commands/quality-control/ test-commands/bwa-mapping/HG001_chr22_rawmappings.bam
 ```

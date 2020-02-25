@@ -3,3 +3,4 @@ data/
 reference/
 snakemake/
 nextflow/
+test-commands/

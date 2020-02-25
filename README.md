@@ -25,7 +25,7 @@ We presume the data & reference have already been downloaded, if not, download i
 
 Respect the following file structure:
 ```
- home/
+ project-folder/
     |
     |- data/
     |   |- HG001.GRCh38_chr22_0.01.fq.gz
@@ -41,4 +41,15 @@ Respect the following file structure:
     |   |-...
     | 
     ...
+```
+
+
+## Commands
+
+```
+# Make directory quality-controls & perform fastqc
+fastqc data/HG001.GRCh38_chr22_0.01.fq.gz data/HG001.GRCh38_chr22_0.01.fq.gz 
+
+# Make directory bwa-mappings & perform alignment & convert sam to bam
+bwa mem -t 24 -M -R '@RG\tID:HG001\tLB:NA12878_giab\tPU:unknown-0.0\tPL:Illumina\tSM:NA12878' reference/Homo_sapiens_assembly38_chr22.fa data/HG001.GRCh38_chr22_0.1_1.fq.gz data/HG001.GRCh38_chr22_0.1_2.fq.gz | samtools view -b - -o bwa_mappings/HG001_chr22_rawmappings.bam
 ```

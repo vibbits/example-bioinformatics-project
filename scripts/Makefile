@@ -2,15 +2,17 @@
 basedir = $(abspath .)
 
 reads = ${basedir}/data/HG001.GRCh38_chr22_0.01_1.fq.gz ${basedir}/data/HG001.GRCh38_chr22_0.01_2.fq.gz
-genome = "${basedir}/reference/Homo_sapiens_assembly38_chr22.fa"
-annot = "${basedir}/reference/Homo_sapiens_assembly38_chr22.fa"
+annot = ${basedir}/reference/Homo_sapiens_assembly38_chr22.fa
 
-OUTPUT_DIR = ${basedir}/test-commands/quality-control
-fastqc_outputs = ${OUTPUT_DIR}/HG001.GRCh38_chr22_0.01_1_fastqc.html ${OUTPUT_DIR}/HG001.GRCh38_chr22_0.01_1_fastqc.zip ${OUTPUT_DIR}/HG001.GRCh38_chr22_0.01_2_fastqc.html ${OUTPUT_DIR}/HG001.GRCh38_chr22_0.01_2_fastqc.zip
+FASTQC_DIR = ${basedir}/test-commands/quality-control
+fastqc_outputs = ${FASTQC_DIR}/HG001.GRCh38_chr22_0.01_1_fastqc.html ${FASTQC_DIR}/HG001.GRCh38_chr22_0.01_1_fastqc.zip ${FASTQC_DIR}/HG001.GRCh38_chr22_0.01_2_fastqc.html ${FASTQC_DIR}/HG001.GRCh38_chr22_0.01_2_fastqc.zip
 
-default: show-info fastqc
+BWA_DIR = ${basedir}/test-commands/bwa-mapping
+bwa_output = ${BWA_DIR}/HG001_chr22_rawmappings.bam
 
-${OUTPUT_DIR}:
+default: show-info all
+
+${FASTQC_DIR}:
 	@mkdir -p $@
 
 .PHONY: show-info
@@ -18,9 +20,14 @@ show-info:
 	@echo "TEST MAKE - VARIANT ANALYSIS"
 	@echo $(abspath .)
 
-${fastqc_outputs} &: ${OUTPUT_DIR} ${reads}
-	@fastqc --outdir ${OUTPUT_DIR} ${reads}
+${fastqc_outputs} &: ${FASTQC_DIR} ${reads}
+	@fastqc --outdir $^
 
-.PHONY: fastqc
-fastqc: ${fastqc_outputs}
-	@echo Finished
+${bwa_output}: ${reads} ${annot}
+	@bwa mem -t 4 -M $^ | samtools view -b - -o $@
+	@echo Finished bam
+
+.PHONY: all
+all: ${FASTQC_DIR} ${fastqc_outputs} ${bwa_output}
+	@fastqc --outdir ${FASTQC_DIR} ${bwa_output}
+	@echo Finised workflow

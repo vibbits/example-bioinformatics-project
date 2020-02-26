@@ -71,7 +71,7 @@ fastqc --outdir test-commands/quality-control/ test-commands/bwa-mapping/HG001_c
 ```
 ## Evaluation and Experiences
 ### GUIX Workflow Language
-This tool is very new. Based on GUIX which is very promising for reproducability (minimal system bootstrap). The language is based on high-level definitions of tasks and workflows. It is a DSL for scheme so a user could drop into a powerful general-purpose programming language if they need to.
+This tool is very new. Based on GUIX which is very promising for reproducability (minimal system bootstrap). The language is based on high-level definitions of "processes" and "workflows". It is a DSL for scheme so a user could drop into a powerful general-purpose programming language if they need to.
 
 The simple sample workflow from the documentation looks like this:
 ```

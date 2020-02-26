@@ -23,7 +23,7 @@ show-info:
 ${fastqc_outputs} &: ${FASTQC_DIR} ${reads}
 	@fastqc --outdir $^
 
-${bwa_output}: ${reads} ${annot}
+${bwa_output}: ${annot} ${reads}
 	@bwa mem -t 4 -M $^ | samtools view -b - -o $@
 	@echo Finished bam
 

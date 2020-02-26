@@ -10,6 +10,8 @@ fastqc_outputs = ${FASTQC_DIR}/HG001.GRCh38_chr22_0.01_1_fastqc.html ${FASTQC_DI
 BWA_DIR = ${basedir}/test-commands/bwa-mapping
 bwa_output = ${BWA_DIR}/HG001_chr22_rawmappings.bam
 
+final_output = ${FASTQC_DIR}/HG001_chr22_rawmappings_fastqc.html ${FASTQC_DIR}/HG001_chr22_rawmappings_fastqc.zip
+
 default: show-info all
 
 ${FASTQC_DIR} ${BWA_DIR}:
@@ -18,7 +20,7 @@ ${FASTQC_DIR} ${BWA_DIR}:
 .PHONY: show-info
 show-info:
 	@echo "TEST MAKE - VARIANT ANALYSIS"
-	@echo $(abspath .)
+	@echo "============================"
 
 ${fastqc_outputs} &: ${FASTQC_DIR} ${reads}
 	@fastqc --outdir $^
@@ -28,6 +30,7 @@ ${bwa_output}: ${annot} ${reads}
 	@echo Finished bam
 
 .PHONY: all
-all: ${FASTQC_DIR} ${BWA_DIR} ${fastqc_outputs} ${bwa_output}
+all: ${FASTQC_DIR} ${BWA_DIR} ${fastqc_outputs} ${bwa_output} ${final_output}
 	@fastqc --outdir ${FASTQC_DIR} ${bwa_output}
-	@echo Finised workflow
+	@echo "================"
+	@echo "Finised workflow"

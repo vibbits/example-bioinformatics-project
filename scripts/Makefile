@@ -23,14 +23,14 @@ show-info:
 	@echo "TEST MAKE - VARIANT ANALYSIS"
 	@echo "============================"
 
-${fastqc_outputs} &: ${FASTQC_DIR} ${reads}
+${fastqc_outputs} &:: ${FASTQC_DIR} ${reads}
 	@fastqc --outdir $^
 
 ${bwa_output}: ${BWA_DIR} ${annot} ${reads}
 	@bwa mem -t 4 -M ${annot} ${reads} | samtools view -b - -o $@
 	@echo Finished bam
 
-${final_outputs} &:  ${bwa_output}
+${final_outputs} &::  ${bwa_output}
 	@fastqc --outdir ${FASTQC_DIR} ${bwa_output}
 
 .PHONY: all

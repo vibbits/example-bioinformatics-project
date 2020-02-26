@@ -1,5 +1,5 @@
 # Variables
-basedir = $(abspath .)
+basedir = .
 outdir = ${basedir}/test-commands
 
 reads = ${basedir}/data/HG001.GRCh38_chr22_0.01_1.fq.gz ${basedir}/data/HG001.GRCh38_chr22_0.01_2.fq.gz

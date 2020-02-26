@@ -3,7 +3,11 @@ Compare and contrast available tools for bioinformatics projects
 
 ## Workflow tools
 May be based on [this](https://github.com/grst/snakemake_nextflow_wdl).
+
 Some [documentation for CWL](https://www.commonwl.org/).
+
+There are many tools. [An informal survey or popularity](https://docs.google.com/forms/d/e/1FAIpQLScoj8Po4P3Qrh7rbJrq2R35c3PQsNCynEeEVUAdcGyly7TT_Q/viewanalytics).
+
 * [GNU Make](https://www.gnu.org/software/make/)
 * [SnakeMake](https://snakemake.readthedocs.io)
 * [Nextflow](https://www.nextflow.io/)

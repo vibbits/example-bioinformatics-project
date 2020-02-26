@@ -8,6 +8,7 @@ Some [documentation for CWL](https://www.commonwl.org/).
 
 There are many tools. [An informal survey or popularity](https://docs.google.com/forms/d/e/1FAIpQLScoj8Po4P3Qrh7rbJrq2R35c3PQsNCynEeEVUAdcGyly7TT_Q/viewanalytics).
 
+Some examples of tools we may test are:
 * [GNU Make](https://www.gnu.org/software/make/)
 * [SnakeMake](https://snakemake.readthedocs.io)
 * [Nextflow](https://www.nextflow.io/)
@@ -68,3 +69,8 @@ bwa mem -t 4 -M reference/Homo_sapiens_assembly38_chr22.fa data/HG001.GRCh38_chr
 # Quality control on bam file
 fastqc --outdir test-commands/quality-control/ test-commands/bwa-mapping/HG001_chr22_rawmappings.bam
 ```
+## Evaluation and Experiences
+### GUIX Workflow Language
+This tool is very new. Based on GUIX which is very promising for reproducability (minimal system bootstrap). The language is based on high-level definitions of tasks and workflows. It is a DSL for scheme so a user could drop into a powerful general-purpose programming language if they need to.
+
+However I could not even install it. It just had a `0.2.0` release 1 week ago and the mailing list has bugs reported that will be fixed in a `0.2.1` release "soon". In summary it is not ready to use _yet_.

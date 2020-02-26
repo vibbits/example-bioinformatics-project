@@ -12,7 +12,7 @@ bwa_output = ${BWA_DIR}/HG001_chr22_rawmappings.bam
 
 default: show-info all
 
-${FASTQC_DIR}:
+${FASTQC_DIR} ${BWA_DIR}:
 	@mkdir -p $@
 
 .PHONY: show-info
@@ -28,6 +28,6 @@ ${bwa_output}: ${annot} ${reads}
 	@echo Finished bam
 
 .PHONY: all
-all: ${FASTQC_DIR} ${fastqc_outputs} ${bwa_output}
+all: ${FASTQC_DIR} ${BWA_DIR} ${fastqc_outputs} ${bwa_output}
 	@fastqc --outdir ${FASTQC_DIR} ${bwa_output}
 	@echo Finised workflow

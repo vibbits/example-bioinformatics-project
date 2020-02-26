@@ -11,7 +11,7 @@ fastqc_outputs = ${FASTQC_DIR}/HG001.GRCh38_chr22_0.01_1_fastqc.html ${FASTQC_DI
 BWA_DIR = ${outdir}/bwa-mapping
 bwa_output = ${BWA_DIR}/HG001_chr22_rawmappings.bam
 
-final_output = ${FASTQC_DIR}/HG001_chr22_rawmappings_fastqc.html ${FASTQC_DIR}/HG001_chr22_rawmappings_fastqc.zip
+final_outputs = ${FASTQC_DIR}/HG001_chr22_rawmappings_fastqc.html ${FASTQC_DIR}/HG001_chr22_rawmappings_fastqc.zip
 
 default: show-info all
 
@@ -26,13 +26,15 @@ show-info:
 ${fastqc_outputs} &: ${FASTQC_DIR} ${reads}
 	@fastqc --outdir $^
 
-${bwa_output}: ${annot} ${reads}
-	@bwa mem -t 4 -M $^ | samtools view -b - -o $@
+${bwa_output}: ${BWA_DIR} ${annot} ${reads}
+	@bwa mem -t 4 -M ${annot} ${reads} | samtools view -b - -o $@
 	@echo Finished bam
 
-.PHONY: all
-all: ${FASTQC_DIR} ${BWA_DIR} ${fastqc_outputs} ${bwa_output} ${final_output}
+${final_outputs} &:  ${bwa_output}
 	@fastqc --outdir ${FASTQC_DIR} ${bwa_output}
+
+.PHONY: all
+all: ${fastqc_outputs} ${final_outputs}
 	@echo "================"
 	@echo "Finised workflow"
 

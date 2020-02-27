@@ -125,3 +125,17 @@ just-a-name:
  recipe
 ```
 [Documentation](https://www.gnu.org/software/make/manual/html_node/index.html) is good and comprehensive though lacking in examples. Though this is generally made up for because `make` is used so foten. A quick internet search will reveal many potential answers, unfortunately some of which are well out of date. That being said, `make` doesn't change very much. There are 2 main downsides to expressing workflows in `make` (besides the modern features that other, more special purpose tools have) are the arcane syntax and the difficult-to-reason-about semantics of dependency trees described manually. For software, `Makefile`s are usually automatically generated.
+
+### Nextflow
+Nextflow is on the way to be the reference bioinformatics pipeline tool. The scripting language is Groovy which makes it in my opinion daunting at first, however with some time spent reading the [manual](https://www.nextflow.io/docs/latest/getstarted.html) it becomes more comprehensible. Together with a very troublesome error-reporting, these are Nextflow's main drawbacks. It has many strengths on the other side: 
+- Easy installation and running
+- Use of conda en containers for environment with all necessary tools, so not caring about any tools that need to be installed (+ reproducibility). 
+- Pipeline resumes after it breaks down at a specific point
+- Theoretically: parallelization,  scalability
+
+Script so far is [here](scripts/testmapping.nf)
+
+IMO: I think there is a lack on specific bioinformatics related tutorials although it is used specifically for this purpose. E.g.: according to the manual, `set` is deprecated in the current version (hence no more documentation on how to use it) and has been replaced by `tuple`, however all of the pipelines out there use `set`. `tuples` should be generated from channels with read pairs, however it's continuously getting stuck somewhere and it's close to impossible to find out where the error is exactly. 
+
+### Snakemake
+TBC.

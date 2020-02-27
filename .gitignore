@@ -4,3 +4,7 @@ reference/
 snakemake/
 nextflow/
 test-commands/
+
+# Nextflow ignoring
+.nextflow*
+work/

@@ -139,3 +139,5 @@ IMO: I think there is a lack on specific bioinformatics related tutorials althou
 
 ### Snakemake
 TBC.
+Might be interesting to check: 
+- https://github.com/maxplanck-ie/snakepipes/tree/2.0.0

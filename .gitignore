@@ -2,9 +2,17 @@
 data/
 reference/
 snakemake/
-nextflow/
+
 test-commands/
 
 # Nextflow ignoring
 .nextflow*
 work/
+
+# files
+*.sam
+*.bam
+*.fq
+*.fq.gz
+
+

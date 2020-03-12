@@ -142,3 +142,4 @@ TBC.
 Might be interesting to check: 
 - https://github.com/maxplanck-ie/snakepipes/tree/2.0.0
 - https://vincebuffalo.com/blog/2020/03/04/understanding-snakemake.html
+- https://github.com/vanheeringen-lab/snakemake-workflows

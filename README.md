@@ -10,13 +10,13 @@ There are many tools. [An informal survey or popularity](https://docs.google.com
 
 Some examples of tools we may test are:
 * [GNU Make](https://www.gnu.org/software/make/) :heavy_check_mark:
-* [SnakeMake](https://snakemake.readthedocs.io) :heavy_check_mark:
+* [SnakeMake](https://snakemake.readthedocs.io) :construction:
 * [Nextflow](https://www.nextflow.io/) :heavy_check_mark:
 * [Toil](https://toil.ucsc-cgl.org/)
 * [Cromwell/WDL](https://cromwell.readthedocs.io)
 * [Guix Workflow Language](https://www.guixwl.org/) :x:
 * [Apache Taverna]()
-* [Apache Airflow](https://airflow.apache.org/)
+* [Apache Airflow](https://airflow.apache.org/) :construction:
 * [Cuneiform]()
 * [Ruffus](http://www.ruffus.org.uk/)
 

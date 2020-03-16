@@ -109,7 +109,7 @@ workflow simple-wisp
         bye       -> sleep
 ```
 
-However I could not even install it. It just had a `0.2.0` release 1 week ago and the mailing list has bugs reported that will be fixed in a `0.2.1` release "soon". In summary it is not ready to use _yet_. The [manual](https://www.guixwl.org/manual/gwl.html) seems fairly comprehensive but this has, of course, not been tried in anger.
+I could install gwl, but the documented `guix workflow` command does not exist after installation. It just had a `0.2.1` bugfix release which does not appear to fix this issue. In summary, it is not ready to use _yet_. The [manual](https://www.guixwl.org/manual/gwl.html) seems fairly comprehensive but this has, of course, not been tried in anger.
 
 ### GNU Make
 This tool is _very_ old and also very common on GNU/Linux systems (users may not even need to install it). The workflow is expressed as a tree of dependency relationships between files. Independent trees may be executed in parallel. Make will not re-run tasks that _do not need to be re-run_ where this is defined by the timestamp on the output relative to the input. These relationships are defined like this:

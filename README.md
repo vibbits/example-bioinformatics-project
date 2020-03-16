@@ -1,4 +1,4 @@
-# example-bioinformatics-project
+# Example Bioinformatics Project
 Compare and contrast available tools for bioinformatics projects
 
 ## Workflow tools

@@ -20,10 +20,16 @@ Some examples of tools we may test are:
 * [Cuneiform]()
 * [Ruffus](http://www.ruffus.org.uk/)
 
-James: GNU Make & Guix Workflow Language
-Tuur: Snakemake & Nextflow
 
-Set-up: analyze the data of variant analysis course: quality control & alignment of subset of the data.
+Results summary:
+
+:heavy_check_mark: :heavy_check_mark: - recommended
+
+:heavy_check_mark: - useful
+
+:x: - not (yet) useful
+
+:construction: - evaluation in progress
 
 ## Situation 1
 We presume the data & reference have already been downloaded, if not, download it similarly as explained in [this repo](https://github.com/tmuylder/variantcalling/blob/master/Commands_jan2020_10pc.md). The commands that should be used are listed here below.

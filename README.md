@@ -151,4 +151,5 @@ Might be interesting to check:
 - https://github.com/vanheeringen-lab/snakemake-workflows
 
 ### Apache Airflow
-Initial setup is very complex. Pipelines are just Python scripts. Has a visualisation of the pipeline as it runs. Very general purpose, leading to the extra complexity. Documentation seems ok, but frastratingly not quite what one is looking for in many cases. For example, the tutorial states, "Please take the time to understand **<concept>**" but does not provide _any_ pointers to documentation for that concept.
+Initial setup is very complex. Pipelines are just Python scripts. Has a visualisation of the pipeline as it runs. Very general purpose, leading to the extra complexity. Documentation seems ok, but frastratingly not quite what one is looking for in many cases. For example, the tutorial states, "Please take the time to understand **<concept>**" but does not provide _any_ pointers to documentation for that concept. Feels verbose and "enterprisy".
+ ![Enterprise software](https://i.imgflip.com/138d0a.jpg)

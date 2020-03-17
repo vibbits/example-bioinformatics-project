@@ -149,3 +149,6 @@ Might be interesting to check:
 - https://github.com/maxplanck-ie/snakepipes/tree/2.0.0
 - https://vincebuffalo.com/blog/2020/03/04/understanding-snakemake.html
 - https://github.com/vanheeringen-lab/snakemake-workflows
+
+### Apache Airflow
+Initial setup is very complex. Pipelines are just Python scripts. Has a visualisation of the pipeline as it runs. Very general purpose, leading to the extra complexity.

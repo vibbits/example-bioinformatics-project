@@ -165,5 +165,13 @@ Might be interesting to check:
 - https://github.com/vanheeringen-lab/snakemake-workflows
 
 ### Apache Airflow
-Initial setup is very complex. Pipelines are just Python scripts. Has a visualisation of the pipeline as it runs. Very general purpose, leading to the extra complexity. Documentation seems ok, but frastratingly not quite what one is looking for in many cases. For example, the tutorial states, "Please take the time to understand **<concept>**" but does not provide _any_ pointers to documentation for that concept. Feels verbose and "enterprisy".
- ![Enterprise software](https://i.imgflip.com/138d0a.jpg)
+Airflow is a general purpose pipelining tool intended to be set up by an expert once for an organisation
+and run workflows on a schedule. Workflows are expected to not change very often. There is a nice web interface which is able
+to display workflows as a graph, shows progress and scheduling information, though it does not aloow for editing workflows.
+The initial setup is very complex -- I never managed to run a workflow from the web interface.
+Feels verbose and "enterprisy".
+![Enterprise software](https://i.imgflip.com/138d0a.jpg)
+
+Workflows are defined as Python scripts -- actually configuration files. The actual work can be done in Python, bash, etc.
+Documentation is severly lacking -- frastratingly not quite what one is looking for in many cases.
+For example, the tutorial states, "Please take the time to understand **<concept>**" but does not provide _any_ pointers to documentation for that concept.

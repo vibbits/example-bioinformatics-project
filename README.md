@@ -16,7 +16,7 @@ Some examples of tools we may test are:
 * [Cromwell/WDL](https://cromwell.readthedocs.io)
 * [Guix Workflow Language](https://www.guixwl.org/) :x:
 * [Apache Taverna]()
-* [Apache Airflow](https://airflow.apache.org/) :construction:
+* [Apache Airflow](https://airflow.apache.org/) :heavy_check_mark:
 * [Cuneiform]()
 * [Ruffus](http://www.ruffus.org.uk/)
 
@@ -25,7 +25,7 @@ Results summary:
 
 :heavy_check_mark: :heavy_check_mark: - recommended
 
-:heavy_check_mark: - useful
+:heavy_check_mark: - usable
 
 :x: - not (yet) useful
 

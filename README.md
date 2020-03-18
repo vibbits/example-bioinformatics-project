@@ -4,24 +4,29 @@ Compare and contrast available tools for bioinformatics projects
 ## Workflow tools
 May be based on [this](https://github.com/grst/snakemake_nextflow_wdl).
 
-Some [documentation for CWL](https://www.commonwl.org/).
+There are [many tools](https://github.com/common-workflow-language/common-workflow-language/wiki/Existing-Workflow-systems) for bioinformaticians to choose from. Each tool comes with its own trade-offs,
+features, hurdles. Prior work in this area includes [an informal survey or popularity](https://docs.google.com/forms/d/e/1FAIpQLScoj8Po4P3Qrh7rbJrq2R35c3PQsNCynEeEVUAdcGyly7TT_Q/viewanalytics),
+and the following review articles:
+1. Jeremy Leipzig, A review of bioinformatic pipeline frameworks, Briefings in Bioinformatics, Volume 18, Issue 3, May 2017, Pages 530–536, https://doi.org/10.1093/bib/bbw020
+2. Elise Larsonneur et al. Evaluating Workflow Management Systems: A Bioinformatics Use Case, published in 2018 IEEE BIBM, https://doi.org/10.1109/BIBM.2018.8621141
 
-There are many tools. [An informal survey or popularity](https://docs.google.com/forms/d/e/1FAIpQLScoj8Po4P3Qrh7rbJrq2R35c3PQsNCynEeEVUAdcGyly7TT_Q/viewanalytics).
+| Tool                                              | Result Summary                        | Documentation                                          | Programming Language                         | Tool Usability | Docker?            | GUI?               | HPC?               |
+|---------------------------------------------------| --------------------------------------|--------------------------------------------------------|----------------------------------------------|----------------|--------------------|--------------------|--------------------|
+| [GNU Make](https://www.gnu.org/software/make/)    | :heavy_check_mark:                    | [Excellent](https://www.gnu.org/software/make/manual/) | Shell                                        | Difficult      | :x:                | :x:                | :x:                |
+| [SnakeMake](https://snakemake.readthedocs.io)     | :construction:                        | [?](https://snakemake.readthedocs.io)                  | Python                                       | ?              | :construction:     | :construction:     | :construction:     |
+| [Nextflow](https://www.nextflow.io/)              | :heavy_check_mark:                    | [?](https://www.nextflow.io/docs/latest/index.html)    | ?                                            | ?              | :question:         | :question:         | :heavy_check_mark: |
+| [Guix Workflow Language](https://www.guixwl.org/) | :x:                                   | [Seems good](https://www.guixwl.org/manual/)           | [Guile Scheme](https://www.gnu.org/s/guile/) | N/A            | :heavy_check_mark: | :x:                | :heavy_check_mark: |
+| [Apache Airflow](https://airflow.apache.org/)     | :x:                                   | [Poor](https://airflow.apache.org/docs/stable/)        | Python                                       | Difficult      | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Toil](https://toil.ucsc-cgl.org/)                |
+| [Cromwell/WDL](https://cromwell.readthedocs.io)   |
+| [CWL](https://www.commonwl.org/)                  |
+| [Ruffus](http://www.ruffus.org.uk/)               |
+| [Apache Taverna](https://taverna.apache.org/)     |
+| [Cuneiform](https://cuneiform-lang.org/)          |
+| [Knime](https://www.knime.com/knime)              |
 
-Some examples of tools we may test are:
-* [GNU Make](https://www.gnu.org/software/make/) :heavy_check_mark:
-* [SnakeMake](https://snakemake.readthedocs.io) :construction:
-* [Nextflow](https://www.nextflow.io/) :heavy_check_mark:
-* [Toil](https://toil.ucsc-cgl.org/)
-* [Cromwell/WDL](https://cromwell.readthedocs.io)
-* [Guix Workflow Language](https://www.guixwl.org/) :x:
-* [Apache Taverna]()
-* [Apache Airflow](https://airflow.apache.org/) :x:
-* [Cuneiform]()
-* [Ruffus](http://www.ruffus.org.uk/)
 
-
-Results summary:
+Key:
 
 :heavy_check_mark: :heavy_check_mark: - recommended
 
@@ -77,7 +82,9 @@ fastqc --outdir test-commands/quality-control/ test-commands/bwa-mapping/HG001_c
 ```
 ## Evaluation and Experiences
 ### GUIX Workflow Language
-This tool is very new. Based on GUIX which is very promising for reproducability (minimal system bootstrap). The language is based on high-level definitions of "processes" and "workflows". It is a DSL for scheme so a user could drop into a powerful general-purpose programming language if they need to.
+This tool is very new. Based on GUIX which is very promising for reproducability (minimal system bootstrap).
+The language is based on high-level definitions of "processes" and "workflows".
+It is a DSL for scheme so a user could drop into a powerful general-purpose programming language if they need to.
 
 The simple sample workflow from the documentation looks like this:
 ```
@@ -115,10 +122,17 @@ workflow simple-wisp
         bye       -> sleep
 ```
 
-I could install gwl, but the documented `guix workflow` command does not exist after installation. It just had a `0.2.1` bugfix release which does not appear to fix this issue. In summary, it is not ready to use _yet_. The [manual](https://www.guixwl.org/manual/gwl.html) seems fairly comprehensive but this has, of course, not been tried in anger.
+I could install gwl, but the documented `guix workflow` command does not exist after installation.
+It just had a `0.2.1` bugfix release which does not appear to fix this issue.
+In summary, it is not ready to use _yet_.
+The [manual](https://www.guixwl.org/manual/gwl.html) seems fairly comprehensive but this has, of course, not been tried in anger.
 
 ### GNU Make
-This tool is _very_ old and also very common on GNU/Linux systems (users may not even need to install it). The workflow is expressed as a tree of dependency relationships between files. Independent trees may be executed in parallel. Make will not re-run tasks that _do not need to be re-run_ where this is defined by the timestamp on the output relative to the input. These relationships are defined like this:
+This tool is _very_ old and also very common on GNU/Linux systems (users may not even need to install it).
+The workflow is expressed as a tree of dependency relationships between files.
+Independent trees may be executed in parallel.
+Make will not re-run tasks that _do not need to be re-run_ where this is defined by the timestamp on the
+output relative to the input. These relationships are defined like this:
 ```make
 target: input
  recipe

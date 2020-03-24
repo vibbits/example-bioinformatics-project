@@ -1,0 +1,79 @@
+# Snakemake file
+
+## First activate the conda environment containing all the necessary tools:
+# conda activate environment.yml
+
+## Run with following command:
+# snakemake -s Snakefile
+
+## Dry-run:
+# snakemake -s Snakefile --dry-run
+
+## Make rule-graph:
+# snakemake -s Snakefile --rulegraph
+
+## Assemble all parameters in a config file and run snakemake with the config file:
+# snakemake -s Snakefile --configfile FILE
+
+# First rule by convention 'all'. Rule for aggregating the main outputs of the workflow. 
+
+#import os
+#import glob
+#(SAMPLES,READS,) = glob_wildcards("data/{sample}0.01_{read}.fq")
+#READS=["1","2"]
+
+
+###############
+REF="/home/tuur/example-bioinformatics-project/reference/Homo_sapiens_assembly38_chr22.fa"
+
+rule all:
+    input:
+        "/home/tuur/example-bioinformatics-project/snakemake/raw_mappings.bam",
+        directory("/home/tuur/example-bioinformatics-project/snakemake/quality-control"),
+        directory("/home/tuur/example-bioinformatics-project/snakemake/quality-control-mapped")
+
+rule fastqc_raw:
+    """
+    Fastqc of raw-reads. 
+    """
+    input:
+        "/home/tuur/example-bioinformatics-project/data/HG001.GRCh38_chr22_0.01_1.fq",
+        "/home/tuur/example-bioinformatics-project/data/HG001.GRCh38_chr22_0.01_2.fq"
+    output:
+        directory("/home/tuur/example-bioinformatics-project/snakemake/quality-control")
+    shell:
+        """
+        mkdir -p {output}
+        fastqc --outdir {output} {input[0]} {input[1]}
+        """
+
+rule bwa_mapping:
+    """
+    Mapping of raw-reads against reference genome hg38.
+    """
+    input:
+        ref=REF,
+        r1="/home/tuur/example-bioinformatics-project/data/HG001.GRCh38_chr22_0.01_1.fq",
+        r2="/home/tuur/example-bioinformatics-project/data/HG001.GRCh38_chr22_0.01_2.fq"
+    output:
+        "/home/tuur/example-bioinformatics-project/snakemake/raw_mappings.bam"
+    params:
+        threads=1
+    shell:
+        """
+        bwa mem -M -t {params.threads} {input.ref} {input.r1} {input.r2} | samtools view -b - -o {output}
+        """
+
+rule fastqc_mapped:
+    """
+    Fastqc of mapped reads. 
+    """
+    input:
+        "/home/tuur/example-bioinformatics-project/snakemake/raw_mappings.bam"
+    output:
+        directory("/home/tuur/example-bioinformatics-project/snakemake/quality-control-mapped")
+    shell:
+        """
+        mkdir -p {output}
+        fastqc --outdir {output} {input}
+        """

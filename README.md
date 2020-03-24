@@ -158,8 +158,62 @@ Script so far is [here](scripts/testmapping.nf)
 IMO: I think there is a lack on specific bioinformatics related tutorials although it is used specifically for this purpose. E.g.: according to the manual, `set` is deprecated in the current version (hence no more documentation on how to use it) and has been replaced by `tuple`, however all of the pipelines out there use `set`. `tuples` should be generated from channels with read pairs, however it's continuously getting stuck somewhere and it's close to impossible to find out where the error is exactly. 
 
 ### Snakemake
-TBC.
-Might be interesting to check: 
+Snakemake is a Python-based workflow management system making it an easy human readable pipeline tool. It contains the same way of working as Make, which is the predecessor of Snakemake. Make looks for a file named `Makefile` when running the `make` command which specifies the rules describing the steps that are run. It consists of a **target** (output), single or list of **dependencies** (input) and the **commands** (Unix commands). Whereas Snakemake looks for a file named `Snakefile` when running the `snakemake` command. The `Snakefile` has rules defining each process and a rule consists of inputs, outputs and commands, just like the `Makefile` has. 
+
+Each rule has a name, filenames and commands are always quoted, shell commands are explicitly defined within a `shell` block whereas Python code is defined in a `run` block. 
+
+Installing Snakemake is easily done with `Conda`, in this case the environment is defined in the `environment-snakemake.yml`-file. When running `snakemake` it searches by default in the same directory for a file `Snakefile`, or you'll have to specify it explicitly. Often you'll perform a `--dry-run` that gives you a sneak peek in how snakemake will run. The output has been summarized here below. Tons of other parameters can be defined to tailor the running of your pipeline to your needs.   
+
+```
+Job counts:
+        count   jobs
+        1       all
+        1       bwa_mapping
+        1       fastqc_mapped
+        1       fastqc_raw
+        4
+This was a dry-run (flag -n). The order of jobs does not reflect the order of execution.
+```
+
+Now, in one of the simplest examples, running fastqc would look like this. 
+```python
+rule fastqc_raw:
+    """
+    Fastqc of raw-reads. 
+    """
+    input:
+        "/path/to/data/read_1.fq",
+         "/path/to/data/read_2.fq"
+    output:
+        directory("/path/to/snakemake/quality-control")
+    shell:
+        """
+        mkdir -p {output}
+        fastqc --outdir {output} {input[0]} {input[1]}
+        """
+``` 
+In this case, I've defined an output (which I also put in `rule all`) because of the way that Snakemake works in its core: you're defining the output file and it will backtrack through all the processes with which files it needs to start to create this output. If you don't define something like a fastqc in the output it's a dead end and will not be processed.  
+
+Note that you thus have to define one rule that rules them all:
+```python
+rule all:
+    input:
+        "/path/to/raw_mappings.bam",
+        directory("/path/to/quality-control"),
+        directory("/path/to/quality-control-mapped")
+```
+
+**Flexibility** in the rule-arguments (interesting for future work):
+- Defining inputs: expanding, wildcards, references etc.
+- Threads
+- Messages
+- Priorities
+- Log-files
+- Job properties
+- Dynamic files
+- Config files
+
+References: 
 - https://github.com/maxplanck-ie/snakepipes/tree/2.0.0
 - https://vincebuffalo.com/blog/2020/03/04/understanding-snakemake.html
 - https://github.com/vanheeringen-lab/snakemake-workflows

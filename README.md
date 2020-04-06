@@ -24,6 +24,7 @@ and the following review articles:
 | [Apache Taverna](https://taverna.apache.org/)     |
 | [Cuneiform](https://cuneiform-lang.org/)          |
 | [Knime](https://www.knime.com/knime)              |
+| [BioShake](https://github.com/PapenfussLab/bioshake)|
 
 
 Key:

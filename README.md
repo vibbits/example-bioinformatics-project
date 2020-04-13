@@ -24,6 +24,7 @@ and the following review articles:
 | [Apache Taverna](https://taverna.apache.org/)     |
 | [Cuneiform](https://cuneiform-lang.org/)          |
 | [Knime](https://www.knime.com/knime)              |
+| [Galaxy](https://usegalaxy.org/)                  | :heavy_check_mark: | [Usable](https://galaxyproject.org/learn/) | Visual DAG | Easy - Intermediate | :no_entry_sign: | :heavy_check_mark: | :no_entry_sign: |
 | [BioShake](https://github.com/PapenfussLab/bioshake)|
 
 
@@ -34,6 +35,8 @@ Key:
 :heavy_check_mark: - usable
 
 :x: - not (yet) useful / usable
+
+:no_entry_sign: - not applicable (see detailed entry)
 
 :construction: - evaluation in progress
 

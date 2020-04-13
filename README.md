@@ -239,3 +239,19 @@ Documentation is severly lacking -- frastratingly not quite what one is looking 
 For example, the tutorial states, "Please take the time to understand **<concept>**" but does not provide _any_ pointers to documentation for that concept.
 
 ![Airflow documentation](images/airflow-tutorial.png)
+
+### Galaxy workflows
+Galaxy workflows is a galaxy web application for designing and running workflows on a galaxy instance. The visual editor is 
+mostly very intuitive. Although understanding which "connector" connects to which "noodle" requires some understanding of
+the tools you are using. Tool parameters may be adjusted on a pane to the right side of the screen (size is not adjustable).
+
+![Galaxy interface](https://galaxyproject.org/images/learn/workflow_editor_overview_annotated.png)
+
+Documentation is useful though dense and hard to search. Knowledge of the tools you need to use is essential. The tools you
+need to use **must** also be available in the Galaxy instance.
+
+The example workflow is simple enough to implement in the visual editor, though my ignorance of `fastqc` prevented me from invoking it correctly. Data files must be uploaded to the Galaxy instance first. Workflow performance will depend on the computing resources available to the Galaxy instance you are using.
+
+![Galaxy version of example workflow](images/galaxy_example.png)
+
+The workflow progress tracking interface is very nice but I do not have a screenshot of our example workflow running because, once I navigated away from it I couldnt find it again.

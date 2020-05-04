@@ -26,6 +26,7 @@ and the following review articles:
 | [Knime](https://www.knime.com/knime)              |
 | [Galaxy](https://usegalaxy.org/)                  | :heavy_check_mark: | [Usable](https://galaxyproject.org/learn/) | :no_entry_sign: (GUI only) | Easy - Intermediate | :no_entry_sign: | :heavy_check_mark: | :no_entry_sign: |
 | [BioShake](https://github.com/PapenfussLab/bioshake)|
+| [Janis](https://janis.readthedocs.io/en/latest/index.html) |
 
 
 Key:

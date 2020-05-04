@@ -4,7 +4,7 @@ Compare and contrast available tools for bioinformatics projects
 ## Workflow tools
 May be based on [this](https://github.com/grst/snakemake_nextflow_wdl).
 
-There are [many tools](https://github.com/common-workflow-language/common-workflow-language/wiki/Existing-Workflow-systems) for bioinformaticians to choose from. Each tool comes with its own trade-offs,
+There are [many tools](https://github.com/common-workflow-language/common-workflow-language/wiki/Existing-Workflow-systems) for bioinformaticians to choose from. Especially see [this _awesome_ list](https://github.com/pditommaso/awesome-pipeline/) of workflow tools. Each tool comes with its own trade-offs,
 features, hurdles. Prior work in this area includes [an informal survey or popularity](https://docs.google.com/forms/d/e/1FAIpQLScoj8Po4P3Qrh7rbJrq2R35c3PQsNCynEeEVUAdcGyly7TT_Q/viewanalytics),
 and the following review articles:
 1. Jeremy Leipzig, A review of bioinformatic pipeline frameworks, Briefings in Bioinformatics, Volume 18, Issue 3, May 2017, Pages 530–536, https://doi.org/10.1093/bib/bbw020
